@@ -64,7 +64,7 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   updateBackground() {
-    this.bgImg = `../../assets/${this.images[this.currentIndex]}`;
+    this.bgImg = `assets/${this.images[this.currentIndex]}`;
   }
 
   toMenu() {
