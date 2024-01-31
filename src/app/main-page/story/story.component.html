@@ -1,0 +1,80 @@
+<div class="container" #storyC
+>
+<div class="slider-bg" >
+  <img [src]="bgImg" class="img-cover">
+</div>
+  <div class="content" *ngIf="!isFliped">
+    <div class="svg-left">
+      <img class="story-svg" src="assets/story2.svg"/>
+    </div>
+    <div class="svg-right" >
+      <img class="story-svg" src="assets/story3.svg"/>
+    </div>
+    <div class="story-desc">
+      <div class="divider" [ngClass]="isViewed? 'animation-line' : 'hidden'">
+        <div class="line"></div>
+        <div class="text">Cooking</div>
+        <div class="line2"></div>
+      </div>
+      <p [ngClass]="isViewed? 'animation-text' : 'hidden'">{{data.left}}</p>
+    </div>
+    <div class="story-img">
+      <img class="image" src="assets/story1.jpg" [ngClass]="isViewed? 'animation-img2' : 'hidden'"/>
+    </div>
+    <div class="story-desc">
+      <div class="divider" [ngClass]="isViewed? 'animation-line' : 'hidden'">
+        <div class="line"></div>
+        <div class="text">Service</div>
+        <div class="line2"></div>
+      </div>
+      <p [ngClass]="isViewed? 'animation-text' : 'hidden'">{{data.right}}</p>
+    </div>
+  </div>
+    <div class="content2" *ngIf="isFliped">
+      <div class="story-img2">
+        <img class="image" src="assets/story5.jpg" [ngClass]="isViewed? 'animation-img' : 'hidden'"/>
+      </div>
+      <div class="story-desc2">
+        <div class="divider" [ngClass]="isViewed? 'animation-line' : 'hidden'">
+          <div class="line"></div>
+          <div class="text">Our Story</div>
+          <div class="line2"></div>
+        </div>
+        <p [ngClass]="isViewed? 'animation-text2' : 'hidden'">{{data.story1}}</p>
+        <p [ngClass]="isViewed? 'animation-text2' : 'hidden'">{{data.story2}}</p>
+      </div>
+      <div class="story-img2">
+        <img class="image" src="assets/story6.jpg" [ngClass]="isViewed? 'animation-img' : 'hidden'"/>
+      </div>
+    </div>
+  <div>
+    <div class="svg-wrapper" 
+    [ngClass]="isViewed? 'animation-button' : 'hidden'"
+    (click)="flipContainer()">
+      <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+        s
+        <rect class="shape" height="60" width="320" />
+      </svg>
+      <div class="text-button"
+      [ngClass]="isViewed? 'animation-line' : 'hidden'"
+       *ngIf="!isFliped">OUR STORY</div>
+      <div class="text-button" 
+      [ngClass]="isViewed? 'animation-line' : 'hidden'"
+      *ngIf="isFliped">OUR WAY</div>
+    </div>
+    <div class="svg-wrapper2" 
+    [ngClass]="isViewed? 'animation-button' : 'hidden'"
+    (click)="flipContainer()">
+      <svg height="60" width="150" xmlns="http://www.w3.org/2000/svg">
+        s
+        <rect class="shape" height="60" width="150" />
+      </svg>
+      <div class="text-button"
+      [ngClass]="isViewed? 'animation-line' : 'hidden'"
+       *ngIf="!isFliped">OUR STORY</div>
+      <div class="text-button" 
+      [ngClass]="isViewed? 'animation-line' : 'hidden'"
+      *ngIf="isFliped">OUR WAY</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="food-left">
+    <img [src]="foodImg" class="img-cover" [ngClass]="isViewed? 'animation-img' : 'hidden'"/>
+  </div>
+  <div class="food-right">
+    <div class="food-group">
+      <div class="food-text" >
+        <div class="divider" >
+          <div class="line" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+          <div class="text" [ngClass]="isViewed? 'animation-line2' : 'hidden'">You Should Try</div>
+          <div class="line2" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+        </div>
+        <div class="desc-group">
+          <h1 [ngClass]="isViewed? 'animation-text' : 'hidden'">{{data.title}}</h1>
+          <p [ngClass]="isViewed? 'animation-text' : 'hidden'">{{data.desc}}</p>
+        </div>
+        <div class="price-group">
+          <div class="price" >
+            <span class="material-symbols-outlined" [ngClass]="isViewed? 'animation-text' : 'hidden'">
+              restaurant
+            </span>
+            <div class="line3" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+            <div [ngClass]="isViewed? 'animation-text' : 'hidden'">{{data.price}}</div>
+          </div>
+        </div>
+        <div class="nav-buttons" [ngClass]="isViewed? 'animation-line' : 'hidden'">
+          <button mat-icon-button class="nav-button" (click)="onLeft()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button mat-icon-button class="nav-button" (click)="onRight()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="food-bottom">
+    <img [src]="foodImg" class="food-img"
+    [ngClass]="isViewed? 'animation-img' : 'hidden'">
+  </div>
+</div>

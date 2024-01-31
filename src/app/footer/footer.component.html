@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="left-part">
+    <div class="image-button"  
+    
+    (click)="toTop()">
+      <span class="material-symbols-outlined icon-button">
+        arrow_forward_ios
+      </span>
+  </div>
+    <img class="footer-img" src="assets/footer1.svg" >
+  </div>
+  <div class="middle-part">
+    <h1 [ngClass]="isViewed? 'animation-header' : 'hidden'">We love creating <span>a vibe.</span></h1>
+    <div class="input-group" 
+    [ngClass]="isViewed? 'animation-input' : 'hidden'">
+      <div>Subscribe for our newsletter:</div>
+      <p><span>recipes, stories</span> and <span>discount codes.</span></p>
+      <form  
+      [formGroup]="emailForm" 
+      (ngSubmit)="sendEmail()">
+      <div class="input">
+        <input
+        type="email"
+        maxlength="30"
+        formControlName="email"
+        >
+        <button type="submit">Send</button>
+      </div>
+        <mat-error *ngIf="!emailForm.valid && emailForm.touched">
+          Please enter a valid email address
+        </mat-error>
+        <div class="message-container" *ngIf="message">
+          <span class="message">{{message}}</span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="right-part" 
+  [ngClass]="isViewed? 'animation-logo' : 'hidden'">
+    <div class="logo">
+      <span class="material-symbols-outlined logo-icon">
+        lunch_dining
+      </span>
+      <div class="logo-name">
+        <span class="logo-name-top">Desert</span>
+        <span class="logo-name">Dining</span>
+      </div>
+    </div>
+    <p>© 2024 All Rights Reserved | Created by Michał.dev</p>
+  </div>
+</div>

@@ -1,0 +1,253 @@
+.header-container{
+  position: fixed;
+  padding: 50px 50px 50px 50px;
+  background-color: transparent;
+  transition:  0.5s;
+  font-family: var(--font-rubik);
+  z-index: 100;
+  
+}
+
+/* header behavior */
+.hide-header {
+  transform: translateY(-100%);
+}
+.show-header {
+  transform: translateY(0);
+}
+.color-header{
+  background-color: rgb(31, 31, 31);
+  opacity: 0.9;
+  transition: 0.2s 
+}
+/*logo*/
+.bottom-button,
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  user-select: none;
+}
+.logo-icon{
+  font-size: 62px;
+  color: var(--desert-color);
+}
+.logo-name{
+  font-size: 28px;
+  letter-spacing: 1px;
+  font-family: var(--font-header);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: -10px
+}
+.logo-name-top{
+  font-size: 20px;
+  color: var(--desert-color);
+  margin-bottom: -12px;
+}
+
+/*sidenav*/
+.sidenav-container{
+  position: fixed !important;
+  padding: 20px;
+  width: 100%;
+  background-color: rgba(41, 41, 41, 0.89);
+  height: 100%;
+}
+.sidebar-icon{
+  display: none;
+  color: var(--desert-color)
+}
+.sidenav-top{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-group-buttons2{
+  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  user-select: none;
+}
+.nav-group-buttons2 button{
+  font-size: 18px;
+}
+.sidenav-group{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.sidenav-bottom{
+  text-align: center;
+  color: rgb(194, 194, 194);
+}
+
+/* buttons and navigation */
+.nav-group-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  gap: 5px;
+  user-select: none;
+}
+.nav-button {
+  position: relative; 
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 0px 25px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: var(--font-rubik);
+}
+.nav-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--desert-color);
+  transition: width 0.3s;
+}
+
+.nav-button:hover::before,
+.nav-button.active::before {
+  width: 100%;
+}
+
+.nav-button:hover {
+  color: var(--desert-color);
+  opacity: 0.8;
+}
+
+.active {
+  color: var(--desert-color);
+  opacity: 1;
+}
+
+/*arrow button*/
+
+.image-button2,
+.image-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: solid var(--desert-color) 2px;
+  transform: rotate(-135deg);
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0;
+  animation: buttonAnimation 0.5s forwards;
+  user-select: none;
+  color: var(--desert-color);
+}
+.image-button2{
+  transform: rotate(45deg);
+}
+.icon-button{
+  position: relative;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  transform: rotate(-135deg);
+}
+.icon-button{
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+.image-button2:hover,
+.image-button:hover{
+  background-color: rgba(250, 190, 112, 0.853);
+  color: var(--dark-basic);
+  border-color: rgba(250, 190, 112, 0.853);
+  animation: button2Animation 0.5s forwards; 
+}
+.image-button2:hover{
+  transform: rotate(135deg);
+  animation: button3Animation 0.5s forwards; 
+}
+.image-button2:active,
+.image-button:active{
+  filter: brightness(70%);
+}
+
+@keyframes buttonAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes button2Animation {
+  0% {
+    opacity: 0;
+    transform: rotate(135deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-135deg);
+  }
+}
+@keyframes button3Animation {
+  0% {
+    opacity: 0;
+    transform: rotate(-145deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .header-container{
+    padding: 50px 50px 50px 50px;
+    z-index: 100;
+  }
+  .sidebar-icon{
+    display: block;
+  }
+  .bottom-button,
+  .nav-group-buttons{
+    display: none;
+  }
+  .nav-group-buttons2{
+    display: flex;
+  }
+  
+  .logo {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+}
+@media (max-width: 330px) {
+  .header-container{
+    padding: 30px 10px 30px 10px;
+  }
+.logo-icon{
+  font-size: 42px;
+}
+.logo-name{
+  font-size: 18px;
+}
+.logo-name-top{
+  font-size: 15px;
+  margin-bottom: -15px;
+}
+}

@@ -1,0 +1,94 @@
+<mat-drawer-container class="container">
+  <mat-drawer #drawer mode="over" 
+  class="sidenav-container" >
+    <div class="sidenav-group">
+      <div>
+        <div class="sidenav-top">
+          <button mat-icon-button (click)="toggleSidenav()">
+            <span class="material-symbols-outlined sidebar-icon">
+              close
+              </span>
+          </button>
+        </div>
+        <div class="nav-group-buttons2">
+          <button 
+        class="nav-button" 
+        [class.active]="currentButton === 'main'"
+        (click)="toTop()">HOME</button>
+        <button 
+        class="nav-button"
+        [class.active]="currentButton === 'menu'"
+        (click)="toMenu()">MENU</button>
+        <button 
+        class="nav-button"
+        (click)="toStory()"
+        [class.active]="currentButton === 'story'">STORY</button>
+        <button 
+        class="nav-button"
+        (click)="toContact()"
+        [class.active]="currentButton === 'contact'">CONTACT</button>
+        </div>
+      </div>
+      <div class=sidenav-bottom>
+        <p>© 2024 All Rights Reserved | Created by Michał.dev</p>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-toolbar class="header-container" 
+  [class.hide-header]="!isScrolledUp" 
+  [class.show-header]="isScrolledUp"
+  [class.color-header]="isScrolledDown">
+    <button mat-icon-button class="example-icon sidebar-icon " 
+      (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="logo">
+      <span class="material-symbols-outlined logo-icon">
+        lunch_dining
+      </span>
+      <div class="logo-name">
+        <span class="logo-name-top">Desert</span>
+        <span class="logo-name">Dining</span>
+      </div>
+    </div>
+    <div class="nav-group-buttons">
+      <button 
+      class="nav-button" 
+      [class.active]="currentButton === 'main'"
+      (click)="toTop()">HOME</button>
+      <button 
+      class="nav-button"
+      [class.active]="currentButton === 'menu'"
+      (click)="toMenu()">MENU</button>
+      <button 
+      class="nav-button"
+      (click)="toStory()"
+      [class.active]="currentButton === 'story'">STORY</button>
+      <button 
+      class="nav-button"
+      (click)="toContact()"
+      [class.active]="currentButton === 'contact'">CONTACT</button>
+    </div>
+    <div class="bottom-button"> 
+      <div class="image-button" 
+      *ngIf="arrowButtonTop"
+      (click)="toStory()">
+        <span class="material-symbols-outlined icon-button">
+          arrow_forward_ios
+        </span>
+      </div>
+      <div class="image-button2" 
+      *ngIf="!arrowButtonTop"
+      (click)="toTop()">
+        <span class="material-symbols-outlined icon-button">
+          arrow_forward_ios
+        </span>
+      </div>
+    </div>
+   
+  </mat-toolbar>
+  <div>
+    <app-main-page #nextComponent></app-main-page>
+    <app-footer></app-footer>
+  </div>
+</mat-drawer-container>

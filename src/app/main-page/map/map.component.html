@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="middle-part">
+    <img src="/assets/contact1.jpg" class="contact-img"
+    [ngClass]="isViewed? 'animation-img' : 'hidden'">
+    <div class="contact-bg" >
+      <img src="/assets/contact1.jpg" class="img-cover">
+      <div class="contact-info2">
+        <div class="divider">
+          <div class="line" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+          <div class="text" [ngClass]="isViewed? 'animation-text' : 'hidden'">Visit us</div>
+          <div class="line2" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+        </div>
+        
+        <div class="info-desc" [ngClass]="isViewed? 'animation-desc' : 'hidden'">
+          <span class="material-symbols-outlined icon">
+            map
+            </span>
+          <div>We are open daily from <span>9 AM</span> to <span>12 PM</span>.</div>
+          <div><span>Hawaii,</span> Honolulu 1214 Fort Kam Rd.</div>
+          <div>Events, Dinners, Chill - <span>Desert Dining</span>.</div>
+        </div>
+        <div class="info-contact" [ngClass]="isViewed? 'animation-desc2' : 'hidden'">
+          <span class="material-symbols-outlined icon">
+            call
+            </span>
+          <div class="contact-title">Make a reservation:</div>
+          <div 
+          class="copy"
+          cdkCopyToClipboard="desertdining@restaurant.com">
+          desertdining@<span>restaurant.com</span></div>
+          <div
+          class="copy"
+          cdkCopyToClipboard="(800) 555‑0175"><span>(800)</span> 555‑0175</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-info">
+      <div class="divider">
+        <div class="line" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+        <div class="text" [ngClass]="isViewed? 'animation-text' : 'hidden'">Visit us</div>
+        <div class="line2" [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+      </div>
+      
+      <div class="info-desc" [ngClass]="isViewed? 'animation-desc' : 'hidden'">
+        <span class="material-symbols-outlined icon">
+          map
+          </span>
+        <p>We are open daily from <span>9 AM</span> to <span>12 PM</span>.</p>
+        <p><span>Hawaii,</span> Honolulu 1214 Fort Kam Rd.</p>
+        <p>Events, Dinners, Chill - <span>Desert Dining</span>.</p>
+      </div>
+      <div class="info-contact" [ngClass]="isViewed? 'animation-desc2' : 'hidden'">
+        <span class="material-symbols-outlined icon">
+          call
+          </span>
+        <div class="contact-title">Make a reservation:</div>
+        <div 
+        class="copy"
+        cdkCopyToClipboard="desertdining@restaurant.com">
+        desertdining@<span>restaurant.com</span></div>
+        <div
+        class="copy"
+        cdkCopyToClipboard="(800) 555‑0175"><span>(800)</span> 555‑0175</div>
+      </div>
+    </div>
+  </div>
+  <div #gmapContainer id="map"  
+  [ngClass]="isViewed? 'animation-img2' : 'hidden'"></div>
+</div>
+
+
+

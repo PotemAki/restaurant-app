@@ -1,0 +1,49 @@
+<div class="main-container" #mainComponent>
+  <div class="slider-bg" >
+    <img [src]='bgImg' class="img-cover">
+  </div>
+    <div class="image-button" (click)="onLeft()">
+        <span class="material-symbols-outlined icon-button">
+          arrow_back_ios</span>
+    </div>
+    <div class="center">
+      <div class="main-top">
+        <div class="main-header">Because Food Is Art.</div>
+        <div class="quote">
+          <div><span>Food is</span> our common ground, a universal <span>experience.</span></div>
+          <p><span>J</span>ames <span>B</span>eard.</p>
+        </div>
+      </div>
+      <div class="svg-wrapper" (click)="toMenu()">
+        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+          s
+          <rect class="shape" height="60" width="320" />
+        </svg>
+        <div class="text">OPEN MENU</div>
+      </div>
+      <div class="svg-wrapper2" (click)="toMenu()">
+        <svg height="60" width="150" xmlns="http://www.w3.org/2000/svg">
+          s
+          <rect class="shape" height="60" width="150" />
+        </svg>
+        <div class="text">OPEN MENU</div>
+      </div>
+    </div>
+    <div class="image-button" (click)="onRight()">
+        <span class="material-symbols-outlined icon-button2">
+          arrow_forward_ios
+        </span>
+    </div>
+    <div class="nav-buttons">
+      <button mat-icon-button class="nav-button" (click)="onLeft()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <button mat-icon-button class="nav-button" (click)="onRight()">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+</div>
+<app-story #storyComponent></app-story>
+<app-food-section></app-food-section>
+<app-menu #menuComponent></app-menu>
+<app-map #contactComponent></app-map>

@@ -1,0 +1,84 @@
+<div class="container">
+  <div>
+    <div class="svg-menu1">
+      <img class="menu-svg" src="assets/menu1.svg"/>
+    </div>
+    <div class="svg-menu2">
+      <img class="menu-svg" src="assets/menu2.svg"/>
+    </div>
+    <div class="svg-menu3">
+      <img class="menu-svg" src="assets/menu3.svg"/>
+    </div>
+    <div class="svg-menu4">
+      <img class="menu-svg" src="assets/menu4.svg"/>
+    </div>
+    <div class="svg-menu5">
+      <img class="menu-svg" src="assets/menu5.svg"/>
+    </div>
+    <div class="svg-menu6">
+      <img class="menu-svg" src="assets/menu6.svg"/>
+    </div>
+    <div class="svg-menu7">
+      <img class="menu-svg" src="assets/menu7.svg"/>
+    </div>
+  </div>
+  <div class="divider">
+    <div class="line"  
+    [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+    <div class="text" 
+    [ngClass]="isViewed? 'animation-text' : 'hidden'" >Menu</div>
+    <div class="line2" 
+    [ngClass]="isViewed? 'animation-line' : 'hidden'"></div>
+  </div>
+  <div class="menu-table"
+  [ngClass]="isViewed? 'animation-buttons' : 'hidden'">
+    <div class="menu-nav">
+      <div class="nav-group-buttons">
+        <button 
+        class="nav-button"
+        [ngClass]="currentOption === 'lunch'? 'active': 'none'"
+        (click)="toLunch()">LUNCH</button>
+        <button 
+        class="nav-button"
+        [ngClass]="currentOption === 'dessert'? 'active': 'none'" 
+        (click)="toDessert()">DESSERT</button>
+        <button 
+        class="nav-button"
+        [ngClass]="currentOption === 'drinks'? 'active': 'none'"
+        (click)="toDrinks()">DRINKS</button>
+      </div>
+    </div>
+    <div class="menu-group" 
+      [ngClass]="animate? 'animation-menu' : 'hidden'">
+      <div class="left-menu">
+        <div class="menu-element-group">
+          <div class="menu-element" *ngFor="let element of menuLeftLunchElements">
+            <div class="element-top">
+              <div>{{element.title}}</div>
+              <div class="divider-line"></div>
+              <div>{{element.price}}</div>
+            </div>
+            <div class="element-bottom">
+              {{element.desc}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="right-menu"> 
+        <div class="menu-element-group">
+          <div class="menu-element" *ngFor="let element of menuRightLunchElements">
+            <div class="element-top">
+              <div>{{element.title}}</div>
+              <div class="divider-line"></div>
+              <div>{{element.price}}</div>
+            </div>
+            <div class="element-bottom">
+              {{element.desc}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
