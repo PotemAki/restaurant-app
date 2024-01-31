@@ -11,7 +11,7 @@ export class FoodSectionComponent {
   // @ViewChild('foodC', { read: ElementRef }) foodC: ElementRef;
   images = foodImg;
   currentIndex = 0;
-  foodImg = '../../../assets/food1.jpg'
+  foodImg = 'assets/food1.jpg'
   dataArray = foodDesc
   data = this.dataArray[this.currentIndex];
   isTimeout

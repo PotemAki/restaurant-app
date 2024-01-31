@@ -14,7 +14,7 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('contactComponent', { read: ElementRef }) contactComponent: ElementRef;
   images = ['main1.jpg', 'main2.jpg', 'main3.jpg', 'main4.jpg'];
   currentIndex = 0;
-  bgImg = '../../assets/main1.jpg'
+  bgImg = 'assets/main1.jpg'
   sub1: Subscription
   sub2: Subscription
   sub3: Subscription
