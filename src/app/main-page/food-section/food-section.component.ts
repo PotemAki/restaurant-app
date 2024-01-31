@@ -44,7 +44,7 @@ export class FoodSectionComponent {
   
 
   updateBackground() {
-    this.foodImg = `../../assets/${this.images[this.currentIndex]}`;
+    this.foodImg = `assets/${this.images[this.currentIndex]}`;
   }
 
   updateData() {
