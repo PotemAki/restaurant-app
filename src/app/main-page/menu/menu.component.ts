@@ -1,12 +1,14 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { menuLeftDessertData, menuLeftDrinksData, menuLeftLunchData, menuRightDessertData, menuRightDrinksData, menuRightLunchData } from '../data';
+import { MainService } from '../main.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit, OnDestroy{
 
   menuLeftLunchElements = menuLeftLunchData
   menuRightLunchElements = menuRightLunchData
@@ -14,30 +16,19 @@ export class MenuComponent {
   animate = true;
   isTimeout;
   isViewed = false;
+  sub: Subscription
 
-  constructor(private elementRef: ElementRef) {}
-  @HostListener('window:scroll', ['$event'])
+  constructor( private mainService: MainService) {}
 
-  onWindowScroll() {
-    const isInViewport = this.isElementInViewport();
-    if (isInViewport) {
-      this.isViewed = true
-    } else {
-  
-      this.isViewed = false;
-    }
+  ngOnInit() {
+    this.sub = this.mainService.animateComponent.subscribe((component) =>{
+      if (component === 'menu') {
+        this.isViewed = true
+      }
+    })
   }
 
-  private isElementInViewport() {
-    const rect = this.elementRef.nativeElement.getBoundingClientRect();
 
-    return (
-      rect.top + 50 <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.bottom + 0 >= 0 &&
-      rect.left >= 0 &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
 
 
   toLunch() {
@@ -62,14 +53,17 @@ export class MenuComponent {
   }
 
 
-setAnimation() {
-  this.animate = false
-    if (this.isTimeout) {
-      clearTimeout(this.isTimeout)
-    }
-    this.isTimeout = setTimeout(() => {
-      this.animate = true
-    },100)
-}
+  setAnimation() {
+    this.animate = false
+      if (this.isTimeout) {
+        clearTimeout(this.isTimeout)
+      }
+      this.isTimeout = setTimeout(() => {
+        this.animate = true
+      },100)
+  }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe()
+  }
 }

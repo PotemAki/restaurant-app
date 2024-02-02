@@ -1,42 +1,30 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {} from 'googlemaps';
+import { Subscription } from 'rxjs';
+import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   title = 'angular-gmap';
-  isViewed = true 
+  isViewed = false 
+  sub: Subscription
 
-  constructor(private elementRef: ElementRef) {}
-  
-  @HostListener('window:scroll', ['$event'])
+  constructor( private mainService: MainService) {}
 
-  onWindowScroll() {
-    const isInViewport = this.isElementInViewport();
-    if (isInViewport) {
-      this.isViewed = true
-    } else {
-  
-      this.isViewed = false;
-    }
+  ngOnInit() {
+    this.sub = this.mainService.animateComponent.subscribe((component) =>{
+      if (component === 'contact') {
+        this.isViewed = true
+      }
+    })
   }
 
-  private isElementInViewport() {
-    const rect = this.elementRef.nativeElement.getBoundingClientRect();
-
-    return (
-      rect.top + 50 <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.bottom + 0 >= 0 &&
-      rect.left >= 0 &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
   
-
   @ViewChild('gmapContainer', { static: false }) gmap: ElementRef;
   map: google.maps.Map;
   lat = 21.32878220283764;
@@ -61,5 +49,9 @@ export class MapComponent implements AfterViewInit {
       position: this.coordinates,
       map: this.map,
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
 }

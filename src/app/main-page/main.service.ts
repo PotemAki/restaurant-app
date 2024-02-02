@@ -10,4 +10,5 @@ export class MainService {
   navigateStory = new Subject<void>()
   navigateContact = new Subject<void>()
   flagButton = new BehaviorSubject<string>('main')
+  animateComponent = new BehaviorSubject<string>('main')
 }

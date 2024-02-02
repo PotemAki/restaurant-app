@@ -1,49 +1,33 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MainService } from '../main-page/main.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
   message = ''
   isTimeOut: any;
   emailForm: FormGroup
   isViewed = false
+  sub: Subscription
+
+  constructor( private mainService: MainService) {}
 
   ngOnInit() {
     this.emailForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email])
     })
+    this.sub = this.mainService.animateComponent.subscribe((component) =>{
+      if (component === 'footer') {
+        this.isViewed = true
+      }
+    })
   }
-
-  constructor(private elementRef: ElementRef) {}
   
-  
-  @HostListener('window:scroll', ['$event'])
-
-  onWindowScroll() {
-    const isInViewport = this.isElementInViewport();
-    if (isInViewport) {
-      this.isViewed = true
-    } else {
-  
-      this.isViewed = false;
-    }
-  }
-
-  private isElementInViewport() {
-    const rect = this.elementRef.nativeElement.getBoundingClientRect();
-
-    return (
-      rect.top + 50 <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.bottom + 0 >= 0 &&
-      rect.left >= 0 &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
   sendEmail() {
     if (this.emailForm.valid) {
         this.message = `We've recieved your email!`
@@ -62,5 +46,7 @@ export class FooterComponent implements OnInit {
     });
   }
 
- 
+ ngOnDestroy() {
+   this.sub.unsubscribe()
+ }
 }

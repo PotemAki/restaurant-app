@@ -22,11 +22,11 @@
         <button 
         class="nav-button"
         (click)="toStory()"
-        [class.active]="currentButton === 'story'">STORY</button>
+        [class.active]="currentButton === 'story' || currentButton === 'food'">STORY</button>
         <button 
         class="nav-button"
         (click)="toContact()"
-        [class.active]="currentButton === 'contact'">CONTACT</button>
+        [class.active]="currentButton === 'contact' || currentButton === 'footer'">CONTACT</button>
         </div>
       </div>
       <div class=sidenav-bottom>
@@ -58,16 +58,16 @@
       (click)="toTop()">HOME</button>
       <button 
       class="nav-button"
-      [class.active]="currentButton === 'menu'"
+      [class.active]="currentButton === 'menu' "
       (click)="toMenu()">MENU</button>
       <button 
       class="nav-button"
       (click)="toStory()"
-      [class.active]="currentButton === 'story'">STORY</button>
+      [class.active]="currentButton === 'story' || currentButton === 'food'">STORY</button>
       <button 
       class="nav-button"
       (click)="toContact()"
-      [class.active]="currentButton === 'contact'">CONTACT</button>
+      [class.active]="currentButton === 'contact' || currentButton === 'footer'">CONTACT</button>
     </div>
     <div class="bottom-button"> 
       <div class="image-button" 
@@ -89,6 +89,5 @@
   </mat-toolbar>
   <div>
     <app-main-page #nextComponent></app-main-page>
-    <app-footer></app-footer>
   </div>
 </mat-drawer-container>

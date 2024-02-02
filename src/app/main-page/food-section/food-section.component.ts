@@ -1,5 +1,7 @@
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { foodDesc, foodImg } from '../data';
+import { MainService } from '../main.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -7,8 +9,8 @@ import { foodDesc, foodImg } from '../data';
   templateUrl: './food-section.component.html',
   styleUrls: ['./food-section.component.css']
 })
-export class FoodSectionComponent {
-  // @ViewChild('foodC', { read: ElementRef }) foodC: ElementRef;
+export class FoodSectionComponent implements OnInit, OnDestroy {
+
   images = foodImg;
   currentIndex = 0;
   foodImg = 'assets/food1.jpg'
@@ -16,31 +18,18 @@ export class FoodSectionComponent {
   data = this.dataArray[this.currentIndex];
   isTimeout
   isViewed = false;
+  sub: Subscription
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private mainService: MainService) {}
   
-  @HostListener('window:scroll', ['$event'])
-
-  onWindowScroll() {
-    const isInViewport = this.isElementInViewport();
-    if (isInViewport) {
-      this.isViewed = true
-    } else {
-  
-      this.isViewed = false;
-    }
+  ngOnInit() {
+    this.sub = this.mainService.animateComponent.subscribe((component) =>{
+      if (component === 'food') {
+        this.isViewed = true
+      }
+    })
   }
-
-  private isElementInViewport() {
-    const rect = this.elementRef.nativeElement.getBoundingClientRect();
-
-    return (
-      rect.top + 50 <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.bottom + 0 >= 0 &&
-      rect.left >= 0 &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
+ 
   
 
   updateBackground() {
@@ -77,4 +66,7 @@ export class FoodSectionComponent {
     },100)
   }
     
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
+}

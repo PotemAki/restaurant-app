@@ -12,6 +12,9 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('storyComponent', { read: ElementRef }) storyComponent: ElementRef;
   @ViewChild('menuComponent', { read: ElementRef }) menuComponent: ElementRef;
   @ViewChild('contactComponent', { read: ElementRef }) contactComponent: ElementRef;
+  @ViewChild('foodComponent', { read: ElementRef }) foodComponent: ElementRef;
+  @ViewChild('footerComponent', { read: ElementRef }) footerComponent: ElementRef;
+
   images = ['main1.jpg', 'main2.jpg', 'main3.jpg', 'main4.jpg'];
   currentIndex = 0;
   bgImg = 'assets/main1.jpg'
@@ -39,6 +42,8 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.observeElement(this.storyComponent.nativeElement, 'story');
     this.observeElement(this.menuComponent.nativeElement, 'menu');
     this.observeElement(this.contactComponent.nativeElement, 'contact');
+    this.observeElement(this.foodComponent.nativeElement, 'food');
+    this.observeElement(this.footerComponent.nativeElement, 'footer');
   }
 
   observeElement(element: HTMLElement, component: string) {
@@ -46,6 +51,11 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewInit {
       root: null,
       rootMargin: '0px',
       threshold: 0.5
+    };
+    const options2 = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.35
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -56,7 +66,17 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewInit {
       });
     }, options);
 
+    const observer2 = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            this.mainService.animateComponent.next(component)
+        }
+      });
+    }, options2);
+
+
     observer.observe(element);
+    observer2.observe(element);
   }
 
   scroll(el: HTMLElement) {

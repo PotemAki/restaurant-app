@@ -1,31 +1,29 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { storyData } from '../data';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { MainService } from '../main.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-story',
   templateUrl: './story.component.html',
   styleUrls: ['./story.component.css']
 })
-export class StoryComponent {
-  // @ViewChild('storyC', { read: ElementRef }) storyC: ElementRef;
+export class StoryComponent implements OnInit, OnDestroy{
   bgImg = 'assets/story1.jpg'
   data = storyData[0]
   isViewed = false;
   isFliped = false;
+  sub: Subscription
 
-  constructor(private elementRef: ElementRef) {}
-  
-  @HostListener('window:scroll', ['$event'])
+  constructor( private mainService: MainService) {}
 
-  onWindowScroll() {
-    const isInViewport = this.isElementInViewport();
-    if (isInViewport) {
-      this.isViewed = true
-    } else {
-  
-      this.isViewed = false;
-    }
+  ngOnInit() {
+    this.sub = this.mainService.animateComponent.subscribe((component) =>{
+      if (component === 'story') {
+        this.isViewed = true
+      }
+    })
   }
 
   flipContainer() {
@@ -37,13 +35,7 @@ export class StoryComponent {
     }
   }
 
-  private isElementInViewport() {
-    const rect = this.elementRef.nativeElement.getBoundingClientRect();
-    return (
-      rect.top + 50 <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.bottom + 0 >= 0 &&
-      rect.left >= 0 &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
 }
