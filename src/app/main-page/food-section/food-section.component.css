@@ -178,8 +178,6 @@
 }
 
 
-
-
 @media (min-width: 1700px) {
   .img-cover{
     transform: translateY(-200px);
@@ -196,7 +194,7 @@
   }
 }
 
-@media (max-width: 1130px) {
+@media (max-width: 1135px) {
   .food-text{
     width: 90%;
     height: 40%;

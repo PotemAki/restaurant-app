@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent } from './main-page/main-page.component';
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -14,10 +13,11 @@ import { FoodSectionComponent } from './main-page/food-section/food-section.comp
 import { StoryComponent } from './main-page/story/story.component';
 import { MenuComponent } from './main-page/menu/menu.component';
 import { MapComponent } from './main-page/map/map.component';
-import {ClipboardModule} from '@angular/cdk/clipboard';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { FooterComponent } from './footer/footer.component'
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     ClipboardModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

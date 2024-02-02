@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {} from 'googlemaps';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   isViewed = false 
   sub: Subscription
 
-  constructor( private mainService: MainService) {}
+  constructor(private mainService: MainService, private elementRef: ElementRef) {}
 
   ngOnInit() {
     this.sub = this.mainService.animateComponent.subscribe((component) =>{
@@ -37,7 +37,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
    zoom: 13
   };
 
-  marker: google.maps.Marker; // Declare marker without initialization
+  marker: google.maps.Marker;
 
   ngAfterViewInit() {
     this.mapInitializer();
