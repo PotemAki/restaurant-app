@@ -14,3 +14,26 @@ body { margin: 0; font-family: 'Rubik', sans-serif !important }
   --bg-dark: rgb(15, 15, 15);
   --desert-color: rgb(250, 190, 112);
 }
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--dark-basic); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--desert-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  rgb(212, 159, 90)
+
+}
