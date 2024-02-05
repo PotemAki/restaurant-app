@@ -89,6 +89,24 @@
   opacity: 0.4;
 }
 
+/*popup message*/
+.message-container {
+  font-weight: bold;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(43, 42, 42, 0.8);
+  color: var(--desert-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 9999;
+}
+.message {
+  text-align: center;
+}
+
 /* divider */
 .divider {
   display: flex;

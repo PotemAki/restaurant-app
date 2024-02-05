@@ -281,6 +281,8 @@
   .main-container{
     justify-content: center;
     padding: 0px 20px;
+    flex-direction: column;
+    gap: 50px;
   }
   .image-button{
     display: none;
@@ -297,6 +299,14 @@
     transform: translateX(0px) !important;
     font-size: 15px;
   }
+  .nav-buttons{
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    animation: buttonAnimation 0.5s forwards;
+    animation-delay: 0.7s;
+    color: var(--desert-color);
+  }
 }
 
 @media (max-width: 330px) {
@@ -305,10 +315,7 @@
     line-height: 1;
     text-align: center;
   }
-  .main-container{
-    flex-direction: column;
-    gap: 50px;
-  }
+ 
   .quote{
     padding: 20px 10px 10px 10px; 
     max-width: 200px;
@@ -362,14 +369,7 @@
     fill: var(--desert-color);
     filter: brightness(70%);
   }
-  .nav-buttons{
-    display: flex;
-    gap: 20px;
-    opacity: 0;
-    animation: buttonAnimation 0.5s forwards;
-    animation-delay: 0.7s;
-    color: var(--desert-color);
-  }
+  
 }
 
 

@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="message-container" *ngIf="message">
+    <span class="message">Copied!</span>
+  </div>
   <div class="middle-part">
     <img src="assets/contact1.jpg" class="contact-img"
     [ngClass]="isViewed? 'animation-img' : 'hidden'">
@@ -26,11 +29,13 @@
           <div class="contact-title">Make a reservation:</div>
           <div 
           class="copy"
-          cdkCopyToClipboard="desertdining@restaurant.com">
+          cdkCopyToClipboard="desertdining@restaurant.com"
+          (click)="infoTimeout()">
           desertdining@<span>restaurant.com</span></div>
           <div
           class="copy"
-          cdkCopyToClipboard="(800) 555‑0175"><span>(800)</span> 555‑0175</div>
+          cdkCopyToClipboard="(800) 555‑0175"
+          (click)="infoTimeout()"><span>(800)</span> 555‑0175</div>
         </div>
       </div>
     </div>
@@ -56,11 +61,13 @@
         <div class="contact-title">Make a reservation:</div>
         <div 
         class="copy"
-        cdkCopyToClipboard="desertdining@restaurant.com">
+        cdkCopyToClipboard="desertdining@restaurant.com"
+        (click)="infoTimeout()">
         desertdining@<span>restaurant.com</span></div>
         <div
         class="copy"
-        cdkCopyToClipboard="(800) 555‑0175"><span>(800)</span> 555‑0175</div>
+        cdkCopyToClipboard="(800) 555‑0175"
+        (click)="infoTimeout()"><span>(800)</span> 555‑0175</div>
       </div>
     </div>
   </div>

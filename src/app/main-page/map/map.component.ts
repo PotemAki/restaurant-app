@@ -13,7 +13,9 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   title = 'angular-gmap';
   isViewed = false 
   sub: Subscription
-
+  isTimeOut: any;
+  message = false;
+  
   constructor(private mainService: MainService) {}
 
   ngOnInit() {
@@ -28,6 +30,15 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     this.initMap()
   }
   
+  infoTimeout() {
+      this.message = true;
+      clearTimeout(this.isTimeOut)
+      this.isTimeOut = setTimeout(() => {
+      this.message = false;
+    }, 1000);
+  }
+
+
   @ViewChild('gmapContainer', { static: false }) gmap: ElementRef;
 
   initMap() {
